@@ -51,13 +51,32 @@ describe 'department' do
     expect(customer_service.expenses).to eq(125)
   end
 
-  it "starts with zero employee expenses by default" do
+  it "starts with no employee expenses by default" do
     customer_service = Department.new("Customer Service")
     bobbi = Employee.new({name: "Bobbi Jaeger", age: "30", salary: "100000"})
     aaron = Employee.new({name: "Aaron Tanaka", age: "25", salary: "90000"}) 
     customer_service.hire(bobbi)
     customer_service.hire(aaron) 
-    expect(customer_service.employee_expenses).to eq(0)
+    expect(customer_service.employee_expenses).to eq({})
+  end
+
+  it "can add expenses and list them by employee" do
+    customer_service = Department.new("Customer Service")
+    bobbi = Employee.new({name: "Bobbi Jaeger", age: "30", salary: "100000"})
+    aaron = Employee.new({name: "Aaron Tanaka", age: "25", salary: "90000"}) 
+    customer_service.hire(bobbi)
+    customer_service.hire(aaron) 
+
+    customer_service.employee_expense(aaron, 500)
+    customer_service.employee_expense(aaron, 100)
+    customer_service.employee_expense(bobbi, 400)
+
+  
+    expect(customer_service.employee_expenses).to eq(
+      {
+        aaron => [500,100], 
+        bobbi => [400]
+      })
   end
 
 
