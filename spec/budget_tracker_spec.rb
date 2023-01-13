@@ -9,6 +9,12 @@ describe 'budgettracker' do
     expect(budget).to be_an_instance_of(BudgetTracker)
   end
 
+  it "has a year" do
+    budget = BudgetTracker.new("2000")
+
+    expect(budget.year).to eq("2000")
+  end
+
   it "does not have any departments by default" do
     budget = BudgetTracker.new("2000")
 
