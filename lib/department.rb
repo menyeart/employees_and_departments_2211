@@ -1,11 +1,13 @@
 require './lib/employee'
 
 class Department
-  attr_reader :name, :employees
+  attr_reader :name, :employees, :expenses
 
   def initialize(name)
     @name = name
     @employees = []
+    @expenses = 0
+   
   end
 
   def hire(employee)
