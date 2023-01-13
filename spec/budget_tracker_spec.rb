@@ -14,4 +14,17 @@ describe 'budgettracker' do
 
     expect(budget.departments).to eq([])
   end
+
+  it "can add departments" do
+    budget = BudgetTracker.new("2000")
+    customer_service = Department.new("Customer Service")
+    accounting = Department.new("Accounting")
+
+    expect(budget.departments).to eq([])
+
+    budget.add_department(customer_service)
+    budget.add_department(accounting)
+
+    expect(budget.departments).to eq([customer_service, accounting])
+  end
 end
