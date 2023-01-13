@@ -49,6 +49,10 @@ describe 'budgettracker' do
     human_resources.expense(700)
 
     expect(budget.expenses_under_500).to eq([customer_service, accounting])
+
+    accounting.expense(200)
+
+    expect(budget.expenses_under_500).to eq([customer_service])
   end
 
   it "can list all employees' salaries" do
