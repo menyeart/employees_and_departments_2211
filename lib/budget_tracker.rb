@@ -10,4 +10,8 @@ class BudgetTracker
     @departments << department
   end
 
+  def expenses_under_500
+    @departments.find_all { |department| department.expenses < 500 }
+  end
+
 end
