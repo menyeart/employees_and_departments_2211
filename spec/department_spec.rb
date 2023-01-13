@@ -71,13 +71,10 @@ describe 'department' do
     customer_service.employee_expense(aaron, 100)
     customer_service.employee_expense(bobbi, 400)
 
-  
     expect(customer_service.employee_expenses).to eq(
       {
         aaron => [500,100], 
         bobbi => [400]
       })
   end
-
-
 end
