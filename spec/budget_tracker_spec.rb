@@ -45,8 +45,7 @@ describe 'budgettracker' do
     expect(budget.expenses_under_500).to eq([customer_service, accounting])
   end
 
-  it "can list all employees' salaries
-  " do
+  it "can list all employees' salaries" do
     budget = BudgetTracker.new("2000")
     customer_service = Department.new("Customer Service")
     accounting = Department.new("Accounting")
@@ -65,6 +64,6 @@ describe 'budgettracker' do
     budget.add_department(accounting)
     budget.add_department(human_resources)
 
-    expect(budget.list_employee_salaries).to eq([100000, 200000, 800000, 110000])
+    expect(budget.list_employee_salaries).to eq([100000, 110000, 200000, 800000])
   end
 end
