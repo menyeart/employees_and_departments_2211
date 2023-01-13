@@ -91,9 +91,10 @@ describe 'budgettracker' do
     human_resources.employee_expense(jomah, 500)
     customer_service.employee_expense(bobbi, 300)
     customer_service.employee_expense(bobbi, 600)
+    customer_service.employee_expense(bobbi, 100)
     accounting.employee_expense(keith, 1000)
     
-    expect(budget.total_all_expenses(bobbi)).to eq(900)
+    expect(budget.total_all_expenses(bobbi)).to eq(1000)
     expect(budget.total_all_expenses(jomah)).to eq(500)
   end
 end
