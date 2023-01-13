@@ -4,7 +4,8 @@ require './lib/budget_tracker'
 
 describe 'budgettracker' do
   it "exsits" do
-    budget = Budget.new("2000")
-    
-    expect(budget).to be_an_instance_of(Budget)
+    budget = BudgetTracker.new("2000")
+
+    expect(budget).to be_an_instance_of(BudgetTracker)
   end
+end
