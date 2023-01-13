@@ -11,7 +11,7 @@ describe 'department' do
   it "does not have employees by default" do
     customer_service = Department.new("Customer Service")
     
-    expect(customer_service.employees).to be([])
+    expect(customer_service.employees).to eq([])
   end
 
 
