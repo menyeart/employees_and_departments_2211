@@ -10,7 +10,7 @@ class Department
     @name = name
     @employees = []
     @expenses = 0
-    @employee_expenses = []
+    @employee_expenses = Hash.new { |h, k| h[k] = [] }
   end
 
   def hire(employee)
@@ -19,5 +19,9 @@ class Department
 
   def expense(amount)
     @expenses += amount
+  end
+
+  def employee_expense(employee, amount)
+    @employee_expenses[employee] << amount
   end
 end
