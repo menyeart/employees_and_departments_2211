@@ -27,4 +27,44 @@ describe 'budgettracker' do
 
     expect(budget.departments).to eq([customer_service, accounting])
   end
+
+  it "can list all departments with expenses less than $500" do
+    budget = BudgetTracker.new("2000")
+    customer_service = Department.new("Customer Service")
+    accounting = Department.new("Accounting")
+    human_resources = Department.new("Human Resources")
+
+    budget.add_department(customer_service)
+    budget.add_department(accounting)
+    budget.add_department(human_resources)
+
+    customer_service.expense(100)
+    accounting.expense(400)
+    human_resources.expense(700)
+
+    expect(budget.expenses_under_500).to eq([customer_service, accounting])
+  end
+
+  it "can list all employees' salaries
+  " do
+    budget = BudgetTracker.new("2000")
+    customer_service = Department.new("Customer Service")
+    accounting = Department.new("Accounting")
+    human_resources = Department.new("Human Resources")
+    bobbi = Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"})
+    keith = Employee.new({name: "Keith Keitherson", age: "40", salary: "$200000"})
+    jomah = Employee.new({name: "Jomah Jomers", age: "26", salary: "$800000"})
+    sunita = Employee.new({name: "Sunita Suns", age: "39", salary: "$110000"})
+
+    human_resources.hire(jomah)
+    accounting.hire(keith)
+    customer_service.hire(bobbi)
+    customer_service.hire(sunita)
+  
+    budget.add_department(customer_service)
+    budget.add_department(accounting)
+    budget.add_department(human_resources)
+
+    expect(budget.list_employee_salaries).to eq([100000, 200000, 800000, 110000])
+  end
 end
