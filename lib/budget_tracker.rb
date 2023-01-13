@@ -21,4 +21,14 @@ class BudgetTracker
       end
     end.flatten
   end
+
+  def total_all_expenses(employee_input)
+    total_expenses = nil
+    @departments.each do |department|
+      department.employees.each do |employee|
+        total_expenses = department.employee_expenses[employee] if employee == employee_input
+      end
+    end
+    total_expenses.sum
+  end
 end
