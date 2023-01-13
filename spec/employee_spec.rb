@@ -31,14 +31,5 @@ describe 'employee' do
     expect(bobbi.salary).to eq(100000)
     bobbi.give_raise(5000)
     expect(bobbi.salary).to eq(105000)
-
   end
-
-
-
-
-
-
-
-
 end
